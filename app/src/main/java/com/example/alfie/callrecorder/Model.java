@@ -10,7 +10,7 @@ public class Model implements Comparable<Model> {
     private String callName;
     private String userNameFromContact;
 
-    public String getUserNameFromContactt(){
+    public String getUserNameFromContact(){
         return userNameFromContact;
     }
 
