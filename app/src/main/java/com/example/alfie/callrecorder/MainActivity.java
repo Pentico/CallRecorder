@@ -59,6 +59,8 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
         res = getResources();
 
         listView = (ListView) findViewById(R.id.mylist);

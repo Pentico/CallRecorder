@@ -21,6 +21,9 @@ public class Model implements Comparable<Model> {
     public String getCallName(){
         return callName;
     }
+    public Model(String callName) {
+        this.callName = callName;
+    }
 
     public void setCallName(String callName){
         this.callName = callName;
