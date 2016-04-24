@@ -23,7 +23,7 @@ import com.example.alfie.callrecorder.Model;
 public class FileHelper {
 
     /**
-     * returns absolute fiel directory
+     * returns absolute file directory
      *
      */
     public static String getFilename(String phoneNumber) throws Exception{
@@ -92,6 +92,7 @@ public class FileHelper {
             if(file1.exists()){
                 file1.delete();
             }
+
         }
 
         filepath = caller.getFilesDir().getAbsolutePath() + "/"
@@ -160,6 +161,7 @@ public class FileHelper {
      */
     public static List<Model>listDir2(File file, Activity caller ){
 
+        Log.e(Constants.TAG,"ListDir2");
         File[] files = file.listFiles();
         List<Model> fileList = new ArrayList<Model>();
         for (File file1 : files){
@@ -172,16 +174,25 @@ public class FileHelper {
                 continue;
             }
 
+            Log.e(Constants.TAG,"Does file have something? ");
+            Log.e(Constants.TAG,file1.getName());
+
             Model model = new Model (file1.getName());
             String phoneNum = model.getCallName().substring(16,
                     model.getCallName().length()-4);
             model.setUserNameFromContact(getContactName(phoneNum,caller));
+
+            Log.e(Constants.TAG, phoneNum + "Tag phone number");
             fileList.add(model);
         }
 
-        Collections.sort(fileList);
-        Collections.sort(fileList,Collections.reverseOrder()); // ???
 
+        Collections.sort(fileList);
+        Collections.sort(fileList, Collections.reverseOrder()); // ???
+
+        String list = String.valueOf(fileList.size());
+        Log.e(Constants.TAG, list);
+        //Log.e(Constants.TAG,fileList.get(0).getCallName());
         return fileList;
 
 
