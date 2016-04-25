@@ -28,7 +28,7 @@ public class FileHelper {
      */
     public static String getFilename(String phoneNumber) throws Exception{
 
-        String filepath = null;
+        String filepath;
         String myDate = null;
         File file = null;
 
@@ -58,10 +58,21 @@ public class FileHelper {
 
         }
         catch (Exception e){
-            Log.e(Constants.TAG, "Exception" +phoneNumber);
+            Log.e(Constants.TAG, "Exception" + phoneNumber);
             e.printStackTrace();
         }
-        return (file.getAbsolutePath() + "/d" + myDate + "p" + phoneNumber + "3gp");
+        //the file name
+        try{
+            String filePath2 = file.getAbsolutePath();
+            return (filePath2 + "/d" + myDate + "p" + phoneNumber + ".3gp");
+        }catch (Exception e){
+
+            e.printStackTrace();
+            Log.e(Constants.TAG,"File filepath failed");
+        }
+
+        return ("/d" +myDate + "p" + phoneNumber + ".3gp");
+
     }
 
     /**
@@ -165,27 +176,26 @@ public class FileHelper {
         File[] files = file.listFiles();
         List<Model> fileList = new ArrayList<Model>();
         for (File file1 : files){
+                Log.e(Constants.TAG,"Does file have something? ");
+                Log.e(Constants.TAG,file1.getName());
 
-            if (!file.getName().matches(Constants.FILE_NAME_PATTERN)){
+           /* if (!file.getName().matches(Constants.FILE_NAME_PATTERN)){
 
-                Log.d(Constants.TAG, String.format(
+                Log.e(Constants.TAG, String.format(
                         "'%s' didn't match the file name pattern",
                         file.getName()));
                 continue;
-            }
+            }*/
 
-            Log.e(Constants.TAG,"Does file have something? ");
-            Log.e(Constants.TAG,file1.getName());
 
             Model model = new Model (file1.getName());
             String phoneNum = model.getCallName().substring(16,
                     model.getCallName().length()-4);
             model.setUserNameFromContact(getContactName(phoneNum,caller));
 
-            Log.e(Constants.TAG, phoneNum + "Tag phone number");
+            Log.e(Constants.TAG,phoneNum);
             fileList.add(model);
         }
-
 
         Collections.sort(fileList);
         Collections.sort(fileList, Collections.reverseOrder()); // ???
