@@ -230,7 +230,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.menu_privacy_policy:
                 Intent browserIntent = new Intent(
                         Intent.ACTION_VIEW,
-                        Uri.parse("http://www.privacychoice.org/policy/mobile?policy=306ef01761f300e3c30ccfc534babf6b"));
+                        Uri.parse("http://www.Pencorp.co.za"));
                 startActivity(browserIntent);
                 break;
             case R.id.menu_delete_all:
@@ -341,7 +341,7 @@ public class MainActivity extends AppCompatActivity {
                             public void onClick(DialogInterface dialog, int id) {
                                 Intent browserIntent = new Intent(
                                         Intent.ACTION_VIEW,
-                                        Uri.parse("http://www.privacychoice.org/policy/mobile?policy=306ef01761f300e3c30ccfc534babf6b"));
+                                        Uri.parse("http://www.PenCorp.co.za"));
                                 startActivity(browserIntent);
                             }
                         });
